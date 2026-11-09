@@ -1,0 +1,5 @@
+import {parseResume,mapFields} from '../ai.js';import {readFile,writeFile} from 'node:fs/promises';import assert from 'node:assert/strict';
+const config=JSON.parse(await readFile('../resume-copilot-local/本机连接.json','utf8'));
+const text='姓名：陈测试\n邮箱：chen@example.com\n教育经历\n2024-09 至 2027-06，甲大学，管理科学，硕士。\n2020-09 至 2024-06，乙大学，信息管理，本科。\n实习经历\n2025-07 至 2025-09，甲公司，数据分析实习生。整理业务数据。\n2023-07 至 2023-09，乙公司，产品实习生。撰写产品文档。\n项目经历：订单分析系统。项目角色：开发者。项目描述：用 Python 分析订单。\n技能：Python、SQL。';
+const start=Date.now();
+try {const result=await parseResume(config,text);assert.equal(result.resume.教育经历.length,2);assert.equal(result.resume.教育经历[0].学校,'甲大学');assert.equal(result.resume.教育经历[1].学校,'乙大学');assert.equal(result.resume.实习经历.length,2);assert.equal(result.resume.实习经历[0].公司,'甲公司');assert.equal(result.resume.实习经历[1].公司,'乙公司');console.log('PASS local multi-record resume',Date.now()-start,'ms');await writeFile('tests/local-multi-result.json',JSON.stringify({elapsedMs:Date.now()-start,result},null,2));}catch(e){console.log(e.message);process.exitCode=1;}

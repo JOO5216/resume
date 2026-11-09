@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <title>简历填写助手</title>
+ <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+ <header><h1>简历填写助手</h1><p>打开招聘页面后，核对内容再填写。</p></header>
+ <nav aria-label="功能"><button data-tab="resume" aria-current="page">简历</button><button data-tab="fill">当前页面</button><button data-tab="settings">设置</button></nav>
+ <p id="status" role="status">先导入简历，或在下方填写。</p>
+ <section id="resume">
+  <details id="parseBox"><summary>从 PDF / Word 整理简历</summary>
+   <p class="hint">先在本机提取文字；选择 AI 整理后，再核对每项内容。</p>
+   <label class="button">选择 PDF / DOCX / TXT<input id="sourceFile" type="file" accept=".pdf,.docx,.txt" hidden></label>
+   <label>简历文字<textarea id="sourceText" rows="8"></textarea></label>
+   <button id="parseResume">整理为草稿</button>
+   <div id="draft" hidden><h2>核对草稿</h2><p class="hint">可修改识别结果；原简历没有的信息请留空。</p><div id="draftFields"></div><p id="draftWarnings"></p><button id="acceptDraft">保存草稿为我的简历</button><button id="discardDraft">丢弃草稿</button></div>
+  </details>
+  <div class="bar"><button id="save">保存简历</button><button id="export" title="导出为 JSON 文件">备份简历</button><label class="button" title="从 JSON 文件恢复简历">导入备份<input type="file" id="import" accept=".json" hidden></label></div>
+  <p class="hint">信息仅存于本浏览器。日期如 2026-09。</p>
+  <div id="editor"></div><button id="clear" class="secondary">删除本地简历</button>
+ </section>
+ <section id="fill" hidden>
+  <div class="bar"><button id="scan">重新识别</button></div>
+  <p class="hint">首次访问新网站，请点击“重新识别”授权。</p>
+  <details class="tools"><summary>更多填写工具</summary><div class="bar"><button id="aiMap">AI 补充对应</button><button id="records">补齐经历条目</button></div><p class="hint">经历区域未展开或有多个相似字段时，请先在网站处理，再重新识别。</p></details>
+  <label class="overwrite"><input type="checkbox" id="overwrite"> 允许覆盖网页已有内容</label>
+  <div id="fields"></div>
+  <button id="apply" disabled>填写勾选字段</button>
+  <p class="hint">填写后请在网页逐项检查。插件不会提交申请。</p>
+ </section>
+ <section id="settings" hidden><h2>AI 服务</h2>
+  <label>服务<select id="provider"></select></label><p id="providerInfo" class="hint"></p>
+  <label>模型 ID<input id="model" autocomplete="off"></label>
+  <label>API Key / 本机口令<input id="apiKey" type="password" autocomplete="off"></label>
+  <label class="button">导入本机连接文件<input id="localConfig" type="file" accept=".json" hidden></label>
+  <div class="bar"><button id="saveAI">保存连接</button><button id="testAI">测试连接</button><button id="forgetKey">清除口令</button></div>
+  <p class="hint">口令仅保存在当前浏览器会话。使用云端服务时，简历文字会发送给所选服务。</p><p id="extensionOrigin" class="hint"></p>
+ </section>
+ <script type="module" src="panel.js"></script>
+</body>
+</html>

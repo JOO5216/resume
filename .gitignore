@@ -1,0 +1,12 @@
+node_modules/
+*.zip
+预览-*.png
+tests/*-result.json
+tests/verification.json
+tests/*-local.*
+.env
+.env.*
+*secret*
+*token*
+server-key.txt
+本机连接.json

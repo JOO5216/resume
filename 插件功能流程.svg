@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc">
+  <title id="title">简历填写助手的工作流程</title>
+  <desc id="desc">用户维护简历并打开招聘页面，插件自动识别字段、生成预览。用户确认后插件填写，用户最后检查并提交。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0L8 4L0 8Z" fill="#65786b"/>
+    </marker>
+  </defs>
+  <style>
+    text{font-family:"Microsoft YaHei","Noto Sans CJK SC",sans-serif;fill:#26332e}
+    .title{font-size:28px;font-weight:700}
+    .sub{font-size:15px;fill:#617067}
+    .lane{font-size:15px;font-weight:700;fill:#52695a}
+    .head{font-size:20px;font-weight:700}
+    .body{font-size:15px;fill:#53645a}
+    .small{font-size:13px;fill:#617067}
+    .user{fill:#fff;stroke:#cdd6ce;stroke-width:1.5}
+    .plugin{fill:#eaf1eb;stroke:#b7cbb9;stroke-width:1.5}
+    .line{fill:none;stroke:#65786b;stroke-width:2;marker-end:url(#arrow)}
+  </style>
+  <rect width="1200" height="640" fill="#f8f8f5"/>
+  <text x="52" y="62" class="title">一份简历，逐页核对填写</text>
+  <text x="52" y="91" class="sub">你决定投递哪里；插件处理重复录入。</text>
+  <text x="52" y="151" class="lane">你来操作</text>
+  <text x="52" y="379" class="lane">插件处理</text>
+  <path d="M168 128V580M168 128H1146" stroke="#d9e1da" fill="none"/>
+  <path d="M168 354H1146M168 580H1146" stroke="#d9e1da" fill="none"/>
+
+  <rect class="user" x="205" y="177" width="255" height="128" rx="12"/>
+  <text x="228" y="215" class="head">维护一份简历</text>
+  <text x="228" y="243" class="body">上传 PDF / Word 或手动填写</text>
+  <text x="228" y="267" class="small">解析草稿需核对后保存</text>
+
+  <rect class="user" x="505" y="177" width="255" height="128" rx="12"/>
+  <text x="528" y="215" class="head">打开招聘页面</text>
+  <text x="528" y="243" class="body">登录并进入简历填写页</text>
+  <text x="528" y="267" class="small">首次使用该网站需授权读取</text>
+
+  <rect class="user" x="805" y="177" width="310" height="128" rx="12"/>
+  <text x="828" y="215" class="head">核对预览，确认填写</text>
+  <text x="828" y="243" class="body">检查来源、内容及勾选状态</text>
+  <text x="828" y="267" class="small">最后在招聘网站检查并自行提交</text>
+
+  <rect class="plugin" x="355" y="405" width="255" height="128" rx="12"/>
+  <text x="378" y="443" class="head">自动识别字段</text>
+  <text x="378" y="471" class="body">读取标签与当前值</text>
+  <text x="378" y="495" class="small">含多段经历、常见复杂控件</text>
+
+  <rect class="plugin" x="655" y="405" width="255" height="128" rx="12"/>
+  <text x="678" y="443" class="head">匹配简历并预览</text>
+  <text x="678" y="471" class="body">规则优先，AI 可补充</text>
+  <text x="678" y="495" class="small">低把握或已有内容留给你确认</text>
+
+  <rect class="plugin" x="955" y="405" width="160" height="128" rx="12"/>
+  <text x="978" y="443" class="head">填写网页</text>
+  <text x="978" y="471" class="body">只写入勾选项</text>
+  <text x="978" y="495" class="small">逐项回报结果</text>
+
+  <path class="line" d="M460 241H505"/>
+  <path class="line" d="M633 305V379H482V405"/>
+  <path class="line" d="M610 469H655"/>
+  <path class="line" d="M782 405V327H960V305"/>
+  <path class="line" d="M1035 305V405"/>
+  <text x="205" y="610" class="small">边界：不会自动点击“提交申请”；无法确定的字段与控件需要人工处理。</text>
+</svg>
