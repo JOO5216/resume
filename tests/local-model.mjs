@@ -1,5 +1,5 @@
 import {readFile,writeFile} from 'node:fs/promises';
-import {parseResume,mapFields} from '../ai.js';
+import {parseResume,mapFields} from '../src/ai.js';
 const config=JSON.parse(await readFile('../resume-copilot-local/本机连接.json','utf8'));
 const started=Date.now();
 const fields=[{id:'a',label:'您的称呼',section:'',recordIndex:null},{id:'b',label:'就读院校',section:'教育经历',recordIndex:1}];

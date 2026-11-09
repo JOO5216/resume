@@ -9,7 +9,7 @@ try{
   await route.fulfill({body:await readFile(new URL('../'+path,import.meta.url)),contentType:path.endsWith('.js')?'text/javascript':path.endsWith('.css')?'text/css':'text/html'});
  });
  await page.addInitScript(()=>{globalThis.saved={};globalThis.chrome={storage:{session:{get:async()=>({}),set:async()=>{}},local:{get:async()=>globalThis.saved,set:async v=>Object.assign(globalThis.saved,v),clear:async()=>globalThis.saved={}}},permissions:{contains:async()=>true,request:async()=>true}};});
- await page.goto('http://copilot.test/panel.html');
+ await page.goto('http://copilot.test/src/panel.html');
  await page.getByLabel('姓名',{exact:true}).fill('测试用户');
  await page.getByRole('button',{name:'＋ 添加教育经历'}).click();
  await page.getByLabel('学校',{exact:true}).fill('测试大学');

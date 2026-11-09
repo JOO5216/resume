@@ -1,11 +1,11 @@
 {
   "name": "resume-copilot",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "private": true,
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.js",
-    "build": "node build.mjs",
+    "build": "node scripts/build.mjs",
     "test:browser": "node tests/browser.mjs && node tests/advanced.mjs && node tests/panel.mjs && node tests/parser.mjs"
   },
   "devDependencies": {

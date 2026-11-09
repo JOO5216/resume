@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {validateMappings,validateDraft,requestJSON,providers,fieldPayload} from '../ai.js';
+import {validateMappings,validateDraft,requestJSON,providers,fieldPayload} from '../src/ai.js';
 const fields=[{id:'1',label:'毕业院校',section:'教育经历',recordIndex:1,value:'不应发送的已有内容'}];
 const entries=[{id:'教育经历.1.学校',section:'教育经历',index:1,field:'学校',value:'测试大学'}];
 test('AI 映射只允许已知字段和简历来源，拒绝重复与虚构动作',()=>{

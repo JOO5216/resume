@@ -18,7 +18,7 @@ try{
   document.querySelector('#date').onclick=()=>document.querySelector('#calendar').hidden=false;
   document.querySelector('#calendar button').onclick=()=>{document.querySelector('#date').value='2027-06-01';document.querySelector('#calendar').hidden=true;};
  });
- await page.addScriptTag({path:fileURLToPath(new URL('../content.js',import.meta.url))});
+ await page.addScriptTag({path:fileURLToPath(new URL('../src/content.js',import.meta.url))});
  const added=await page.evaluate(()=>globalThis.__resumeCopilot.ensureRecords({教育经历:2}));
  assert.equal(added[0].added,1);
  let fields=await page.evaluate(()=>globalThis.__resumeCopilot.scan());

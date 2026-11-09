@@ -3,14 +3,14 @@ export async function extractText(file){
  const ext=file.name.split('.').pop().toLowerCase();
  if(ext==='txt')return {text:await file.text(),warnings:[]};
  if(ext==='docx'){
-  const {default:mammoth}=await import('./vendor/mammoth.js');
+  const {default:mammoth}=await import('../vendor/mammoth.js');
   const result=await mammoth.extractRawText({arrayBuffer:await file.arrayBuffer()});
   return {text:result.value,warnings:result.messages.map(m=>m.message)};
  }
  if(ext==='pdf'){
-  const pdfjs=await import('./vendor/pdf.mjs');
-  pdfjs.GlobalWorkerOptions.workerSrc=new URL('./vendor/pdf.worker.mjs',import.meta.url).href;
-  const task=pdfjs.getDocument({data:new Uint8Array(await file.arrayBuffer()),isEvalSupported:false,useWasm:false,cMapUrl:new URL('./vendor/cmaps/',import.meta.url).href,cMapPacked:true,standardFontDataUrl:new URL('./vendor/standard_fonts/',import.meta.url).href});
+  const pdfjs=await import('../vendor/pdf.mjs');
+  pdfjs.GlobalWorkerOptions.workerSrc=new URL('../vendor/pdf.worker.mjs',import.meta.url).href;
+  const task=pdfjs.getDocument({data:new Uint8Array(await file.arrayBuffer()),isEvalSupported:false,useWasm:false,cMapUrl:new URL('../vendor/cmaps/',import.meta.url).href,cMapPacked:true,standardFontDataUrl:new URL('../vendor/standard_fonts/',import.meta.url).href});
   try{
    const pdf=await task.promise;if(pdf.numPages>30)throw Error('简历超过30页，请提取相关页面');
    const pages=[],warnings=[];

@@ -1,6 +1,6 @@
 // 所有动作都受本地白名单约束；模型不提供选择器或可执行代码。
 (() => {
- if(globalThis.__resumeCopilot?.version==='0.2.5') return;
+ if(globalThis.__resumeCopilot?.version==='0.2.8') return;
  const nodes=new Map(); let serial=0;let scannedURL='';let busy=false;
  const groups=['教育经历','工作经历','实习经历','项目经历'];
  const blocked=/验证码|密码|紧急|推荐人|联系人|父亲|母亲|配偶|password|captcha|referr|emergency|协议|同意|consent/i;
@@ -185,7 +185,7 @@
    return results;
   }finally{nodes.clear();busy=false;}
  }
- globalThis.__resumeCopilot={version:'0.2.5',scan,fill,ensureRecords};
+ globalThis.__resumeCopilot={version:'0.2.8',scan,fill,ensureRecords};
  chrome.runtime.onMessage.addListener((msg,sender,reply)=>{
   if(msg.type==='rc-scan')reply({fields:scan(),url:location.href});
   if(msg.type==='rc-fill'){fill(msg.items,msg.overwrite).then(reply).catch(e=>reply({error:e.message}));return true;}

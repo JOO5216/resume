@@ -25,7 +25,7 @@ function edit(){
 async function save(){validateResume(resume);await chrome.storage.local.set({resume});entries=flattenResume(resume);invalidate();status('简历已保存。请重新识别网页。');}
 function invalidate(){rows=[];$('#fields').replaceChildren();$('#apply').disabled=true;scanTab=null;}
 async function active(){const [tab]=await chrome.tabs.query({active:true,currentWindow:true});if(!tab?.id)throw Error('没有可用网页');return tab;}
-async function inject(allowPrompt=true){const tab=await active();if(!/^https?:\/\//.test(tab.url||''))throw Error('请先打开普通招聘网页');const origin=new URL(tab.url).origin+'/*';if(!await chrome.permissions.contains({origins:[origin]})&&(!allowPrompt||!await chrome.permissions.request({origins:[origin]})))throw Error('请点击“识别当前网页”并授权读取这个网站');await chrome.scripting.executeScript({target:{tabId:tab.id},files:['content.js']});try{await chrome.scripting.executeScript({target:{tabId:tab.id,allFrames:true},files:['content.js']});}catch{}return tab;}
+async function inject(allowPrompt=true){const tab=await active();if(!/^https?:\/\//.test(tab.url||''))throw Error('请先打开普通招聘网页');const origin=new URL(tab.url).origin+'/*';if(!await chrome.permissions.contains({origins:[origin]})&&(!allowPrompt||!await chrome.permissions.request({origins:[origin]})))throw Error('请点击“重新识别”并授权读取这个网站');await chrome.scripting.executeScript({target:{tabId:tab.id},files:['src/content.js']});try{await chrome.scripting.executeScript({target:{tabId:tab.id,allFrames:true},files:['src/content.js']});}catch{}return tab;}
 async function scan(allowPrompt=true){
  entries=flattenResume(resume);
  invalidate();const tab=await inject(allowPrompt);scanTab=tab.id;scanURL=tab.url;

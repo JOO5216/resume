@@ -4,9 +4,9 @@ import assert from 'node:assert/strict';
 const browser=await chromium.launch({channel:'msedge',headless:true});
 try{
  const page=await browser.newPage();
- await page.setContent(await readFile(new URL('../demo.html',import.meta.url),'utf8'));
+ await page.setContent(await readFile(new URL('fixtures/demo.html',import.meta.url),'utf8'));
  await page.evaluate(()=>{globalThis.chrome={runtime:{onMessage:{addListener(){}}}};globalThis.submits=0;document.querySelector('form').addEventListener('submit',()=>globalThis.submits++);});
- await page.addScriptTag({path:new URL('../content.js',import.meta.url).pathname.replace(/^\/(\w:)/,'$1')});
+ await page.addScriptTag({path:new URL('../src/content.js',import.meta.url).pathname.replace(/^\/(\w:)/,'$1')});
  const fields=await page.evaluate(()=>globalThis.__resumeCopilot.scan());
  assert.equal(fields.some(f=>f.label==='密码'),false);
  const id=label=>fields.find(f=>f.label===label).id;

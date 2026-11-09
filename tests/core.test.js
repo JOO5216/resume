@@ -1,6 +1,6 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {matchField, flattenResume, validateResume} from '../core.js';
+import {matchField, flattenResume, validateResume} from '../src/core.js';
 test('中英文字段对应，避免姓名与学校名称混淆',()=>{
  assert.equal(matchField('姓名'),'姓名');
  assert.equal(matchField('School name'),'学校');

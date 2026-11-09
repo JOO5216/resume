@@ -11,7 +11,7 @@ try{
  });
  await page.goto('http://copilot.test/');
  const results=await page.evaluate(async()=>{
-  const {extractText}=await import('/parser.js');const results={};
+  const {extractText}=await import('/src/parser.js');const results={};
   for(const ext of ['pdf','docx']){const response=await fetch(`/tests/fixtures/resume.${ext}`);results[ext]=await extractText(new File([await response.arrayBuffer()],`resume.${ext}`));}
   return results;
  });
